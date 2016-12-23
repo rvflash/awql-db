@@ -12,5 +12,4 @@ for _, t := range db.TablesPrefixedBy("VIDEO") {
     fmt.Println(t.SourceName())
 }
 // Output: VIDEO_PERFORMANCE_REPORT
-}
  ```
