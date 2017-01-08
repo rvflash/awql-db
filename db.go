@@ -113,6 +113,22 @@ func (d *Database) Table(table string) (DataSchema, error) {
 	return nil, errors.New("DatabaseError.UNKNOWN_TABLE")
 }
 
+// Tables returns the list of all tables.
+func (d *Database) Tables() []DataSchema {
+	nbT := len(d.s.Tables)
+	nbV := len(d.s.Views)
+	tables := make([]DataSchema, nbT+nbV)
+	// All the reports
+	for i := 0; i < nbT; i++ {
+		tables[i] = &d.s.Tables[i]
+	}
+	// All the views.
+	for i := 0; i < nbV; i++ {
+		tables[i+nbT] = &d.s.Views[i]
+	}
+	return tables
+}
+
 // TablesPrefixedBy returns the list of tables prefixed by this pattern.
 func (d *Database) TablesContains(pattern string) (tables []DataSchema) {
 	// Search in all reports.
