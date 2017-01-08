@@ -44,6 +44,7 @@ type Database struct {
 	Version string
 	fields  map[string][]DataSchema
 	s       Schema
+	ready   bool
 }
 
 // NewParser returns a new instance of Parser.
@@ -77,6 +78,10 @@ func (d *Database) AddView(v *View, replace bool) error {
 
 // Load loads all dependencies of the database.
 func (d *Database) Load() error {
+	if d.ready {
+		// Schema already loaded.
+		return nil
+	}
 	if err := d.loadReports(); err != nil {
 		return errors.New("DatabaseError.TABLES")
 	}
@@ -86,6 +91,8 @@ func (d *Database) Load() error {
 	if err := d.buildColumnsIndex(); err != nil {
 		return errors.New("DatabaseError.COLUMNS")
 	}
+	d.ready = true
+
 	return nil
 }
 
