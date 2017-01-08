@@ -34,7 +34,8 @@ func ExampleDatabase_Tables() {
 	// Ignores the errors for the demo.
 	db.Load()
 
-	for _, t := range db.Tables() {
+	tb, _ := db.Tables()
+	for _, t := range tb {
 		fmt.Println(t.SourceName())
 	}
 	// Output:

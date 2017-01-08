@@ -9,9 +9,20 @@ import (
 	"strings"
 )
 
+// Environment.
 const (
 	refReportPath = "./src/%s/reports.yml"
 	refViewPath   = "./src/views.yml"
+)
+
+// Error messages.
+var (
+	ErrNoTable      = errors.New("DatabaseError.NO_TABLE")
+	ErrTableExists  = errors.New("DatabaseError.TABLE_ALREADY_EXISTS")
+	ErrLoadTables   = errors.New("DatabaseError.TABLES")
+	ErrLoadViews    = errors.New("DatabaseError.VIEWS")
+	ErrLoadColumns  = errors.New("DatabaseError.COLUMNS")
+	ErrUnknownTable = errors.New("DatabaseError.UNKNOWN_TABLE")
 )
 
 // DataSchema represents a basic data table.
@@ -59,10 +70,10 @@ func (d *Database) AddView(v *View, replace bool) error {
 	// Checks if the view already exists.
 	if t, err := d.Table(v.Name); err == nil {
 		if !replace {
-			return errors.New("DatabaseError.TABLE_ALREADY_EXISTS")
+			return ErrTableExists
 		}
 		if _, ok := t.(DataSchemaView); !ok {
-			return errors.New("DatabaseError.TABLE_ALREADY_EXISTS")
+			return ErrTableExists
 		}
 	}
 	// Updates the views configuration file.
@@ -83,13 +94,13 @@ func (d *Database) Load() error {
 		return nil
 	}
 	if err := d.loadReports(); err != nil {
-		return errors.New("DatabaseError.TABLES")
+		return ErrLoadTables
 	}
 	if err := d.loadViews(); err != nil {
-		return errors.New("DatabaseError.VIEWS")
+		return ErrLoadViews
 	}
 	if err := d.buildColumnsIndex(); err != nil {
-		return errors.New("DatabaseError.COLUMNS")
+		return ErrLoadColumns
 	}
 	d.ready = true
 
@@ -110,23 +121,26 @@ func (d *Database) Table(table string) (DataSchema, error) {
 			return &d.s.Views[i], nil
 		}
 	}
-	return nil, errors.New("DatabaseError.UNKNOWN_TABLE")
+	return nil, ErrUnknownTable
 }
 
-// Tables returns the list of all tables.
-func (d *Database) Tables() []DataSchema {
+// Tables returns the list of all tables or a error if there is none.
+func (d *Database) Tables() ([]DataSchema, error) {
 	nbT := len(d.s.Tables)
 	nbV := len(d.s.Views)
-	tables := make([]DataSchema, nbT+nbV)
-	// All the reports
-	for i := 0; i < nbT; i++ {
-		tables[i] = &d.s.Tables[i]
+	if nbA := nbT + nbV; nbA > 0 {
+		tables := make([]DataSchema, nbA)
+		// All the reports
+		for i := 0; i < nbT; i++ {
+			tables[i] = &d.s.Tables[i]
+		}
+		// All the views.
+		for i := 0; i < nbV; i++ {
+			tables[i+nbT] = &d.s.Views[i]
+		}
+		return tables, nil
 	}
-	// All the views.
-	for i := 0; i < nbV; i++ {
-		tables[i+nbT] = &d.s.Views[i]
-	}
-	return tables
+	return nil, ErrNoTable
 }
 
 // TablesPrefixedBy returns the list of tables prefixed by this pattern.
@@ -189,7 +203,7 @@ func (d *Database) TablesWithColumn(column string) []DataSchema {
 func (d *Database) buildColumnsIndex() error {
 	// Returns on error if there is no table.
 	if len(d.s.Tables) == 0 {
-		return errors.New("DatabaseError.NO_TABLE")
+		return ErrNoTable
 	}
 	// References for each column, the tables using it.
 	d.fields = make(map[string][]DataSchema)
