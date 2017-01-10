@@ -11,8 +11,9 @@ import (
 
 // Environment.
 const (
-	refReportPath = "./src/%s/reports.yml"
-	refViewPath   = "./src/views.yml"
+	dbDir       = "./src"
+	reportsPath = dbDir + "/%s/reports.yml"
+	viewsPath   = dbDir + "/views.yml"
 )
 
 // Error messages.
@@ -52,15 +53,43 @@ type Schema struct {
 
 // Database represents the database.
 type Database struct {
-	Version string
-	fields  map[string][]DataSchema
-	s       Schema
-	ready   bool
+	Version  string
+	fields   map[string][]DataSchema
+	ready    bool
+	s        Schema
+	viewFile string
 }
 
 // NewParser returns a new instance of Parser.
 func NewDb(version string) *Database {
-	return &Database{Version: version}
+	return &Database{Version: version, viewFile: viewsPath}
+}
+
+// IsSupported returns true if the version is supported.
+func IsSupported(version string) bool {
+	if version == "" {
+		return false
+	}
+	for _, v := range SupportedVersions() {
+		if v == version {
+			return true
+		}
+	}
+	return false
+}
+
+// SupportedVersions returns the list of Adwords API versions supported.
+func SupportedVersions() (versions []string) {
+	files, err := ioutil.ReadDir(dbDir)
+	if err != nil {
+		return
+	}
+	for _, f := range files {
+		if f.IsDir() {
+			versions = append(versions, f.Name())
+		}
+	}
+	return
 }
 
 // AddView create a view in the database.
@@ -79,7 +108,7 @@ func (d *Database) AddView(v *View, replace bool) error {
 	// Updates the views configuration file.
 	var dv DataView
 	dv.Views = append(d.s.Views, *v)
-	if err := ioutil.WriteFile(refViewPath, []byte(dv.String()), 0644); err != nil {
+	if err := ioutil.WriteFile(d.viewFile, []byte(dv.String()), 0644); err != nil {
 		return err
 	}
 	d.s.Views = dv.Views
@@ -96,14 +125,26 @@ func (d *Database) Load() error {
 	if err := d.loadReports(); err != nil {
 		return ErrLoadTables
 	}
-	if err := d.loadViews(); err != nil {
-		return ErrLoadViews
-	}
-	if err := d.buildColumnsIndex(); err != nil {
-		return ErrLoadColumns
+	if err := d.loadViewsAndIndexes(); err != nil {
+		return err
 	}
 	d.ready = true
 
+	return nil
+}
+
+// SetViewsPath overloads the default views file path.
+// This file stocks all user views.
+// If the database has been built, reloads views and indexes.
+func (d *Database) SetViewsFile(p string) error {
+	d.viewFile = p
+
+	if d.ready {
+		// Views already load as data set, so load it again!
+		if err := d.loadViewsAndIndexes(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
@@ -227,9 +268,24 @@ func (d *Database) buildColumnsIndex() error {
 	return nil
 }
 
+// loadFile
+func (d *Database) loadFile(path string) ([]byte, error) {
+	// Gets path of reports reference.
+	p, err := filepath.Abs(path)
+	if err != nil {
+		return []byte{}, err
+	}
+	// Gets reference in yaml format.
+	ymlFile, err := ioutil.ReadFile(p)
+	if err != nil {
+		return []byte{}, err
+	}
+	return ymlFile, nil
+}
+
 // loadReports loads all report table and returns it as Database or error.
 func (d *Database) loadReports() error {
-	ymlFile, err := d.loadFile(fmt.Sprintf(refReportPath, d.Version))
+	ymlFile, err := d.loadFile(fmt.Sprintf(reportsPath, d.Version))
 	if err != nil {
 		return err
 	}
@@ -241,7 +297,7 @@ func (d *Database) loadReports() error {
 
 // loadReports loads all report table and returns it as Database or error.
 func (d *Database) loadViews() error {
-	ymlFile, err := d.loadFile(refViewPath)
+	ymlFile, err := d.loadFile(d.viewFile)
 	if err != nil {
 		return err
 	}
@@ -269,17 +325,13 @@ func (d *Database) loadViews() error {
 	return nil
 }
 
-// loadFile
-func (d *Database) loadFile(path string) ([]byte, error) {
-	// Gets path of reports reference.
-	p, err := filepath.Abs(path)
-	if err != nil {
-		return []byte{}, err
+// loadViewsAndIndexes loads all views and builds indexes.
+func (d *Database) loadViewsAndIndexes() error {
+	if err := d.loadViews(); err != nil {
+		return ErrLoadViews
 	}
-	// Gets reference in yaml format.
-	ymlFile, err := ioutil.ReadFile(p)
-	if err != nil {
-		return []byte{}, err
+	if err := d.buildColumnsIndex(); err != nil {
+		return ErrLoadColumns
 	}
-	return ymlFile, nil
+	return nil
 }
