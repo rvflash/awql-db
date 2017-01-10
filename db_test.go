@@ -29,6 +29,28 @@ func TestNewDb(t *testing.T) {
 	}
 }
 
+func TestIsSupported(t *testing.T) {
+	var vTests = []struct {
+		v  string
+		ok bool
+	}{
+		{"", false},
+		{"v201607", false},
+		{"v201609", true},
+	}
+
+	for i, vt := range vTests {
+		if ok := awql_db.IsSupported(vt.v); vt.ok != ok {
+			t.Errorf("%d. Expected '%t' with '%s', received '%t'", i, vt.ok, vt.v, ok)
+		}
+	}
+}
+
+func ExampleSupportedVersions() {
+	fmt.Println(awql_db.SupportedVersions())
+	// Output: [v201609]
+}
+
 func ExampleDatabase_Tables() {
 	db := awql_db.NewDb("v201609")
 	// Ignores the errors for the demo.
