@@ -1,9 +1,9 @@
 package awql_db_test
 
 import (
+	"fmt"
 	"testing"
 
-	"fmt"
 	"github.com/rvflash/awql-db"
 )
 
