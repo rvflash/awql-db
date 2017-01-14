@@ -59,7 +59,7 @@ func SupportedVersions() (versions []string) {
 
 // Database represents the database.
 type Database struct {
-	v        string
+	Version  string
 	fd       map[string][]DataTable
 	tb, vw   []DataTable
 	ready    bool
@@ -68,7 +68,7 @@ type Database struct {
 
 // NewParser returns a new instance of Database.
 func NewDb(version string) *Database {
-	return &Database{v: version, viewFile: viewsPath}
+	return &Database{Version: version, viewFile: viewsPath}
 }
 
 // AddView creates and adds a view in the database.
@@ -275,7 +275,7 @@ func (d *Database) loadFile(path string) ([]byte, error) {
 // loadReports loads all report table and returns it as Database or error.
 func (d *Database) loadReports() error {
 	// Gets the content of the Yaml configuration file.
-	ymlFile, err := d.loadFile(fmt.Sprintf(reportsPath, d.v))
+	ymlFile, err := d.loadFile(fmt.Sprintf(reportsPath, d.Version))
 	if err != nil {
 		return err
 	}
