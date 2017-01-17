@@ -1,7 +1,6 @@
 package awql_db
 
 import (
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
@@ -20,14 +19,14 @@ const (
 
 // Error messages.
 var (
-	ErrNoTable         = errors.New("DatabaseError.NO_TABLE")
-	ErrTableExists     = errors.New("DatabaseError.TABLE_ALREADY_EXISTS")
-	ErrLoadTables      = errors.New("DatabaseError.TABLES")
-	ErrLoadViews       = errors.New("DatabaseError.VIEWS")
-	ErrLoadColumns     = errors.New("DatabaseError.COLUMNS")
-	ErrMismatchColumns = errors.New("DatabaseError.COLUMNS_MISMATCH")
-	ErrUnknownTable    = errors.New("DatabaseError.UNKNOWN_TABLE")
-	ErrUnknownColumn   = errors.New("DatabaseError.UNKNOWN_COLUMN")
+	ErrNoTable         = NewDatabaseError("no table")
+	ErrTableExists     = NewDatabaseError("table already exists")
+	ErrLoadTables      = NewDatabaseError("tables")
+	ErrLoadViews       = NewDatabaseError("views")
+	ErrLoadColumns     = NewDatabaseError("columns")
+	ErrMismatchColumns = NewDatabaseError("columns mismatch")
+	ErrUnknownTable    = NewDatabaseError("unknown table")
+	ErrUnknownColumn   = NewDatabaseError("unknown column")
 )
 
 // IsSupported returns true if the version is supported.
