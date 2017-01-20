@@ -8,7 +8,7 @@ import (
 )
 
 func TestNewDb(t *testing.T) {
-	db := awql_db.NewDb("v201609")
+	db := awql_db.NewDb("v201609", "")
 	if err := db.Load(); err != nil {
 		t.Errorf("Expected no error on loading tables and views properties, received %s", err)
 	}
@@ -52,7 +52,7 @@ func ExampleSupportedVersions() {
 }
 
 func ExampleDatabase_Tables() {
-	db := awql_db.NewDb("v201609")
+	db := awql_db.NewDb("v201609", "")
 	// Ignores the errors for the demo.
 	db.Load()
 

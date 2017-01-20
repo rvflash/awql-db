@@ -58,16 +58,16 @@ func SupportedVersions() (versions []string) {
 
 // Database represents the database.
 type Database struct {
-	Version  string
-	fd       map[string][]DataTable
-	tb, vw   []DataTable
-	ready    bool
-	viewFile string
+	Version       string
+	fd            map[string][]DataTable
+	tb, vw        []DataTable
+	ready         bool
+	dir, viewFile string
 }
 
 // NewParser returns a new instance of Database.
-func NewDb(version string) *Database {
-	return &Database{Version: version, viewFile: viewsPath}
+func NewDb(version, src string) *Database {
+	return &Database{Version: version, dir: src, viewFile: viewsPath}
 }
 
 // AddView creates and adds a view in the database.
@@ -259,7 +259,7 @@ func (d *Database) buildColumnsIndex() error {
 // loadFile
 func (d *Database) loadFile(path string) ([]byte, error) {
 	// Gets path of reports reference.
-	p, err := filepath.Abs(path)
+	p, err := filepath.Abs(d.dir + path)
 	if err != nil {
 		return []byte{}, err
 	}
