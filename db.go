@@ -259,7 +259,7 @@ func (d *Database) buildColumnsIndex() error {
 // loadFile
 func (d *Database) loadFile(path string) ([]byte, error) {
 	// Gets path of reports reference.
-	p, err := filepath.Abs(d.dir + path)
+	p, err := filepath.Abs(filepath.Join(d.dir, path))
 	if err != nil {
 		return []byte{}, err
 	}
