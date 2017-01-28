@@ -1,4 +1,4 @@
-package awql_db
+package awqldb
 
 import (
 	"fmt"
@@ -65,7 +65,7 @@ type Database struct {
 	dir, viewFile string
 }
 
-// NewParser returns a new instance of Database.
+// NewDb returns a new instance of Database.
 func NewDb(version, src string) *Database {
 	return &Database{Version: version, dir: src, viewFile: viewsPath}
 }
@@ -124,7 +124,7 @@ func (d *Database) Load() error {
 	return nil
 }
 
-// Report returns the table by its name or an error if it not exists.
+// Table returns the table by its name or an error if it not exists.
 func (d *Database) Table(table string) (DataTable, error) {
 	for _, t := range d.tb {
 		if t.SourceName() == table {
@@ -140,7 +140,7 @@ func (d *Database) Table(table string) (DataTable, error) {
 	return nil, ErrUnknownTable
 }
 
-// Reports returns the list of all tables or a error if there is none.
+// Tables returns the list of all tables or a error if there is none.
 func (d *Database) Tables() ([]DataTable, error) {
 	if d.ready {
 		if len(d.vw) > 0 {
@@ -151,7 +151,7 @@ func (d *Database) Tables() ([]DataTable, error) {
 	return nil, ErrNoTable
 }
 
-// TablesPrefixedBy returns the list of tables prefixed by this pattern.
+// TablesContains returns the list of tables prefixed by this pattern.
 func (d *Database) TablesContains(pattern string) (tables []DataTable) {
 	// Search in all reports.
 	for _, t := range d.tb {
@@ -202,12 +202,12 @@ func (d *Database) TablesSuffixedBy(pattern string) (tables []DataTable) {
 	return tables
 }
 
-// WithColumn returns the list of tables using this column.
+// TablesWithColumn returns the list of tables using this column.
 func (d *Database) TablesWithColumn(column string) []DataTable {
 	return d.fd[column]
 }
 
-// SetViewsPath overloads the default views file path.
+// SetViewsFile overloads the default views file path.
 // This file stocks all user views.
 // If the database has been built, reloads views and indexes.
 func (d *Database) SetViewsFile(p string) error {
