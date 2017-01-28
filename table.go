@@ -1,4 +1,4 @@
-package awql_db
+package awqldb
 
 import (
 	"fmt"
@@ -48,7 +48,7 @@ func (t Table) Columns() []awql.DynamicField {
 	return fields
 }
 
-// FieldByName returns the field with this column name or an error.
+// Field returns the field with this column name or an error.
 func (t Table) Field(name string) (Field, error) {
 	for _, c := range t.Cols {
 		if c.Head == name {
@@ -287,7 +287,7 @@ func (c Condition) String() string {
 	return s
 }
 
-// Values returns the filtering value.
+// Value returns the filtering value.
 func (c Condition) Value() ([]string, bool) {
 	return c.ColumnValue, c.IsValueLiteral
 }

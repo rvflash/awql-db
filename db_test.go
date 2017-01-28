@@ -1,4 +1,4 @@
-package awql_db_test
+package awqldb_test
 
 import (
 	"fmt"

@@ -1,4 +1,4 @@
-package awql_db
+package awqldb
 
 import "strings"
 
