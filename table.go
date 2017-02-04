@@ -22,7 +22,6 @@ type DataTable interface {
 	AggregateFieldName() string
 	Field(name string) (Field, error)
 	IsView() bool
-	fmt.Stringer
 }
 
 // Table represents a data table.
@@ -122,7 +121,6 @@ func (t Table) String() string {
 	if t.IsView() {
 		s += t.View.String()
 	}
-
 	return s
 }
 
@@ -429,6 +427,12 @@ func (t View) FieldByName(column string) (Field, error) {
 		}
 	}
 	return nil, ErrUnknownColumn
+}
+
+// LegacyString returns an empty string.
+// To skip. Method of awql.DataStmt interface not implemented.
+func (t View) LegacyString() string {
+	return ""
 }
 
 // GroupList returns the group by columns.

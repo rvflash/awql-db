@@ -3,7 +3,10 @@ package awqldb
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
+	"sort"
+	"strconv"
 	"strings"
 
 	awql "github.com/rvflash/awql-parser"
@@ -12,13 +15,14 @@ import (
 
 // Environment.
 const (
-	dbDir       = "./src"
-	reportsPath = dbDir + "/%s/reports.yml"
-	viewsPath   = dbDir + "/views.yml"
+	dbDir   = "./src"
+	rptFile = "%s/reports.yml"
+	vwFile  = "views.yml"
 )
 
 // Error messages.
 var (
+	ErrVersion         = NewDatabaseError("version not supported")
 	ErrNoTable         = NewDatabaseError("no table")
 	ErrTableExists     = NewDatabaseError("table already exists")
 	ErrLoadTables      = NewDatabaseError("tables")
@@ -29,12 +33,68 @@ var (
 	ErrUnknownColumn   = NewDatabaseError("unknown column")
 )
 
+// Database represents the database.
+type Database struct {
+	fd             map[string][]DataTable
+	tb, vw         []DataTable
+	ready          bool
+	v, dir, vwFile string
+}
+
+// Open returns a new connexion to the Adwords database.
+// @see https://github.com/rvflash/awql-db#data-source-name for how
+// the DSN string is formatted
+func Open(dsn string) (*Database, error) {
+	// parseDsn extracts from the data source name, the database directory,
+	// the API version and an optional boolean to disable the database loading.
+	var parseDsn = func(s string) (dir, vwFile, version string, noOp bool) {
+		dsn := strings.Split(s, "|")
+		switch len(dsn) {
+		case 3:
+			vwFile = dsn[2]
+			fallthrough
+		case 2:
+			dir = dsn[1]
+			fallthrough
+		case 1:
+			opt := strings.Split(dsn[0], ":")
+			if len(opt) == 2 {
+				noOp, _ = strconv.ParseBool(opt[1])
+			}
+			version = opt[0]
+		}
+		return
+	}
+	dir, viewFile, version, noOp := parseDsn(dsn)
+
+	db := &Database{}
+	if err := db.setDir(dir); err != nil {
+		return db, err
+	}
+	if viewFile == "" {
+		db.vwFile = filepath.Join(db.dir, vwFile)
+	} else {
+		db.vwFile = viewFile
+	}
+
+	if err := db.setVersion(version); err != nil {
+		return db, err
+	}
+
+	if !noOp {
+		if err := db.Load(); err != nil {
+			return db, err
+		}
+	}
+	return db, nil
+}
+
 // IsSupported returns true if the version is supported.
-func IsSupported(version string) bool {
+func (d *Database) HasVersion(version string) bool {
 	if version == "" {
 		return false
 	}
-	for _, v := range SupportedVersions() {
+	for _, v := range d.SupportedVersions() {
 		if v == version {
 			return true
 		}
@@ -43,8 +103,8 @@ func IsSupported(version string) bool {
 }
 
 // SupportedVersions returns the list of Adwords API versions supported.
-func SupportedVersions() (versions []string) {
-	files, err := ioutil.ReadDir(dbDir)
+func (d *Database) SupportedVersions() (versions []string) {
+	files, err := ioutil.ReadDir(d.dir)
 	if err != nil {
 		return
 	}
@@ -54,20 +114,6 @@ func SupportedVersions() (versions []string) {
 		}
 	}
 	return
-}
-
-// Database represents the database.
-type Database struct {
-	Version       string
-	fd            map[string][]DataTable
-	tb, vw        []DataTable
-	ready         bool
-	dir, viewFile string
-}
-
-// NewDb returns a new instance of Database.
-func NewDb(version, src string) *Database {
-	return &Database{Version: version, dir: src, viewFile: viewsPath}
 }
 
 // AddView creates and adds a view in the database.
@@ -86,7 +132,7 @@ func (d *Database) AddView(stmt awql.CreateViewStmt) error {
 	var exists bool
 	for i, ov := range d.vw {
 		if exists := ov.SourceName() == v.SourceName(); exists {
-			// View already exists, replace it!
+			// View already exists, so replace it!
 			d.vw[i] = v
 			break
 		}
@@ -100,7 +146,7 @@ func (d *Database) AddView(stmt awql.CreateViewStmt) error {
 	for _, v := range views {
 		s += v.String()
 	}
-	if err := ioutil.WriteFile(d.viewFile, []byte(s), 0644); err != nil {
+	if err := ioutil.WriteFile(d.vwFile, []byte(s), 0644); err != nil {
 		return err
 	}
 	d.vw = views
@@ -116,8 +162,11 @@ func (d *Database) Load() error {
 	if err := d.loadReports(); err != nil {
 		return ErrLoadTables
 	}
-	if err := d.loadViewsAndIndexes(); err != nil {
-		return err
+	if err := d.loadViews(); err != nil {
+		return ErrLoadViews
+	}
+	if err := d.buildColumnsIndex(); err != nil {
+		return ErrLoadColumns
 	}
 	d.ready = true
 
@@ -207,23 +256,6 @@ func (d *Database) TablesWithColumn(column string) []DataTable {
 	return d.fd[column]
 }
 
-// SetViewsFile overloads the default views file path.
-// This file stocks all user views.
-// If the database has been built, reloads views and indexes.
-func (d *Database) SetViewsFile(p string) error {
-	d.viewFile = p
-
-	if d.ready {
-		// Views already load as data set, so we need to reload it.
-		if err := d.loadViewsAndIndexes(); err != nil {
-			d.ready = false
-			return err
-		}
-	}
-
-	return nil
-}
-
 // buildColumnsIndex lists for each column the tables using it.
 func (d *Database) buildColumnsIndex() error {
 	if len(d.tb) == 0 {
@@ -256,10 +288,10 @@ func (d *Database) buildColumnsIndex() error {
 	return nil
 }
 
-// loadFile
+// loadFile retrieves the content of the given file path.
 func (d *Database) loadFile(path string) ([]byte, error) {
 	// Gets path of reports reference.
-	p, err := filepath.Abs(filepath.Join(d.dir, path))
+	p, err := filepath.Abs(path)
 	if err != nil {
 		return []byte{}, err
 	}
@@ -274,7 +306,8 @@ func (d *Database) loadFile(path string) ([]byte, error) {
 // loadReports loads all report table and returns it as Database or error.
 func (d *Database) loadReports() error {
 	// Gets the content of the Yaml configuration file.
-	ymlFile, err := d.loadFile(fmt.Sprintf(reportsPath, d.Version))
+	file := filepath.Join(d.dir, fmt.Sprintf(rptFile, d.v))
+	ymlFile, err := d.loadFile(file)
 	if err != nil {
 		return err
 	}
@@ -300,7 +333,7 @@ func (d *Database) loadReports() error {
 // loadReports loads all report table and returns it as Database or error.
 func (d *Database) loadViews() error {
 	// Gets the content of the Yaml configuration file.
-	ymlFile, err := d.loadFile(d.viewFile)
+	ymlFile, err := d.loadFile(d.vwFile)
 	if err != nil {
 		return err
 	}
@@ -340,17 +373,6 @@ func (d *Database) loadViews() error {
 		d.vw[i] = v.Views[i]
 	}
 
-	return nil
-}
-
-// loadViewsAndIndexes loads all views and builds indexes.
-func (d *Database) loadViewsAndIndexes() error {
-	if err := d.loadViews(); err != nil {
-		return ErrLoadViews
-	}
-	if err := d.buildColumnsIndex(); err != nil {
-		return ErrLoadColumns
-	}
 	return nil
 }
 
@@ -442,4 +464,37 @@ func (d *Database) newView(stmt awql.CreateViewStmt) (DataTable, error) {
 	view.View = data
 
 	return view, nil
+}
+
+// setDir defines the database root directory.
+func (d *Database) setDir(dir string) (err error) {
+	if dir == "" {
+		// Set default directory if the path is empty.
+		dir = dbDir
+	}
+	d.dir, err = filepath.Abs(dir)
+	if err != nil {
+		return NewXDatabaseError("connection failed", err.Error())
+	}
+	if _, err = os.Stat(d.dir); os.IsNotExist(err) {
+		return NewXDatabaseError("connection failed", err.Error())
+	}
+	return nil
+}
+
+// setVersion defines the API version to use.
+func (d *Database) setVersion(version string) error {
+	if version == "" {
+		// Set the latest API version if it is undefined.
+		vs := d.SupportedVersions()
+		sort.Strings(vs)
+		version = vs[len(vs)-1]
+	}
+	d.v = version
+
+	// Checks if it's a valid API version.
+	if !d.HasVersion(d.v) {
+		return ErrVersion
+	}
+	return nil
 }
