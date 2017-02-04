@@ -10,12 +10,12 @@ All information about Adwords reports represented as tables or user views.
 
 ## Example
  
- ```go
-db := awql_db.NewDb("v201609")
-// Ignores the check of error for the test
-db.Load()
-for _, t := range db.TablesPrefixedBy("VIDEO") {
-    fmt.Println(t.SourceName())
+```go
+import db "github.com/rvflash/awql-db"
+
+awql, _ := db.Open("v201609")
+for _, table := range awql.TablesPrefixedBy("VIDEO") {
+    fmt.Println(table.SourceName())
 }
 // Output: VIDEO_PERFORMANCE_REPORT
- ```
+```
