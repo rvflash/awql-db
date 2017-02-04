@@ -41,8 +41,9 @@ type Database struct {
 	v, dir, vwFile string
 }
 
-// NewDb returns a new instance of Database.
-// @example v201609:false|/src/awql-db|/src/awql-db/views.yml
+// Open returns a new connexion to the Adwords database.
+// @see https://github.com/rvflash/awql-db#data-source-name for how
+// the DSN string is formatted
 func Open(dsn string) (*Database, error) {
 	// parseDsn extracts from the data source name, the database directory,
 	// the API version and an optional boolean to disable the database loading.
