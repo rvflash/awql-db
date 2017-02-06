@@ -35,10 +35,11 @@ var (
 
 // Database represents the database.
 type Database struct {
-	fd             map[string][]DataTable
-	tb, vw         []DataTable
-	ready          bool
-	v, dir, vwFile string
+	fd     map[string][]DataTable
+	tb, vw []DataTable
+	ready  bool
+	Version,
+	dir, vwFile string
 }
 
 // Open returns a new connexion to the Adwords database.
@@ -306,7 +307,7 @@ func (d *Database) loadFile(path string) ([]byte, error) {
 // loadReports loads all report table and returns it as Database or error.
 func (d *Database) loadReports() error {
 	// Gets the content of the Yaml configuration file.
-	file := filepath.Join(d.dir, fmt.Sprintf(rptFile, d.v))
+	file := filepath.Join(d.dir, fmt.Sprintf(rptFile, d.Version))
 	ymlFile, err := d.loadFile(file)
 	if err != nil {
 		return err
@@ -490,10 +491,10 @@ func (d *Database) setVersion(version string) error {
 		sort.Strings(vs)
 		version = vs[len(vs)-1]
 	}
-	d.v = version
+	d.Version = version
 
 	// Checks if it's a valid API version.
-	if !d.HasVersion(d.v) {
+	if !d.HasVersion(d.Version) {
 		return ErrVersion
 	}
 	return nil
