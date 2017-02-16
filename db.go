@@ -155,6 +155,17 @@ func (d *Database) AddView(stmt awql.CreateViewStmt) error {
 	return nil
 }
 
+// ColumnNames returns a list of all column names.
+func (d *Database) ColumnNames() []string {
+	pos := 0
+	names := make([]string, len(d.fd))
+	for s := range d.fd {
+		names[pos] = s
+		pos++
+	}
+	return names
+}
+
 // Load loads all dependencies of the database.
 func (d *Database) Load() error {
 	if d.ready {
