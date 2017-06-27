@@ -5,7 +5,7 @@
 // src/v201705/reports.yml
 // DO NOT EDIT!
 
-package main
+package schema
 
 import (
 	"bytes"
@@ -226,6 +226,7 @@ type bintree struct {
 	Func     func() (*asset, error)
 	Children map[string]*bintree
 }
+
 var _bintree = &bintree{nil, map[string]*bintree{
 	"src": &bintree{nil, map[string]*bintree{
 		"v201609": &bintree{nil, map[string]*bintree{
@@ -286,4 +287,3 @@ func _filePath(dir, name string) string {
 	cannonicalName := strings.Replace(name, "\\", "/", -1)
 	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
-
