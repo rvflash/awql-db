@@ -329,7 +329,7 @@ func (d *Database) loadViews() error {
 	// Gets reference in Yaml format.
 	ymlFile, err := ioutil.ReadFile(p)
 	if err != nil {
-		return err
+		return nil
 	}
 	// Views represents all views from the configuration file.
 	type Views struct {
