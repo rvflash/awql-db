@@ -397,15 +397,17 @@ func (d *Database) newView(stmt awql.CreateViewStmt) (DataTable, error) {
 	}
 
 	// Manages columns.
-	cnames := stmt.Columns()
-	cols := stmt.SourceQuery().Columns()
-	csize := len(cols)
-	if size := len(cnames); size > 0 && size != csize {
-		return nil, ErrMismatchColumns
-	}
-	data.Cols = make([]Column, csize)
-	for i := 0; i < csize; i++ {
-		col, err := t.newColumn(cols[i], cnames[i])
+	cols, cnames := stmt.SourceQuery().Columns(), stmt.Columns()
+	size, csize := len(cols), len(cnames)
+	data.Cols = make([]Column, size)
+	for i := 0; i < size; i++ {
+		var alias awql.DynamicField
+		if i >= csize {
+			alias = cols[i]
+		} else {
+			alias = cnames[i]
+		}
+		col, err := t.newColumn(cols[i], alias)
 		if err != nil {
 			return nil, err
 		}
@@ -449,7 +451,7 @@ func (d *Database) newView(stmt awql.CreateViewStmt) (DataTable, error) {
 	}
 
 	// Copy columns of the data source, merged with view's columns names, on the view.
-	view.Cols = make([]Column, csize)
+	view.Cols = make([]Column, size)
 	copy(view.Cols, data.Cols)
 
 	// Finally adds the table source.
