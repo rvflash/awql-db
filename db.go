@@ -297,7 +297,6 @@ func (d *Database) buildColumnsIndex() error {
 
 // loadReports loads all report table and returns it as Database or error.
 func (d *Database) loadReports() error {
-	println(d.Version)
 	// Gets the static content of the Yaml configuration file.
 	ymlFile, err := schema.Asset(fmt.Sprintf("src/%s/reports.yml", d.Version))
 	if err != nil {
