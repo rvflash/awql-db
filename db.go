@@ -76,7 +76,6 @@ func Open(dsn string) (*Database, error) {
 	if db.Version == "" {
 		// Set the latest API version if it is undefined.
 		vs := db.SupportedVersions()
-		sort.Strings(vs)
 		db.Version = vs[len(vs)-1]
 	}
 	// Checks if it's a valid API version.
@@ -105,10 +104,11 @@ func (d *Database) HasVersion(version string) bool {
 }
 
 // SupportedVersions returns the list of Adwords API versions supported.
-func (d *Database) SupportedVersions() (versions []string) {
+func (d *Database) SupportedVersions() (vs []string) {
 	for _, f := range schema.AssetNames() {
-		versions = append(versions, strings.Split(f, "/")[1])
+		vs = append(vs, strings.Split(f, "/")[1])
 	}
+	sort.Strings(vs)
 	return
 }
 
@@ -297,6 +297,7 @@ func (d *Database) buildColumnsIndex() error {
 
 // loadReports loads all report table and returns it as Database or error.
 func (d *Database) loadReports() error {
+	println(d.Version)
 	// Gets the static content of the Yaml configuration file.
 	ymlFile, err := schema.Asset(fmt.Sprintf("src/%s/reports.yml", d.Version))
 	if err != nil {
