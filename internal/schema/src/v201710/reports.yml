@@ -8,7 +8,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -95,8 +95,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, ContentBudgetLostImpressionShare, ContentImpressionShare, ContentRankLostImpressionShare, EngagementRate, Engagements, SearchBudgetLostImpressionShare, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, ContentBudgetLostImpressionShare, ContentImpressionShare, ContentRankLostImpressionShare, EngagementRate, Engagements, SearchBudgetLostImpressionShare, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ContentBudgetLostImpressionShare
@@ -181,8 +181,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, ContentBudgetLostImpressionShare, ContentImpressionShare, ContentRankLostImpressionShare, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, InvalidClickRate, InvalidClicks, SearchBudgetLostImpressionShare, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, ValuePerConversion, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, ContentBudgetLostImpressionShare, ContentImpressionShare, ContentRankLostImpressionShare, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, InvalidClickRate, InvalidClicks, SearchBudgetLostImpressionShare, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -234,9 +234,6 @@ reports:
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -280,6 +277,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -427,8 +425,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -532,13 +530,16 @@ reports:
   - name: AD_PERFORMANCE_REPORT
     aggr: Id
     cols: 
+      - name: AccentColor
+        kind: String
+        zero: true
       - name: AccountCurrencyCode
         kind: String
         zero: true
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -569,12 +570,6 @@ reports:
         kind: Double
         notc: [ ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
         zero: true
-      - name: AdGroupAdDisapprovalReasons
-        kind: List
-        zero: true
-      - name: AdGroupAdTrademarkDisapproved
-        kind: Boolean
-        zero: true
       - name: AdGroupId
         kind: Long
         zero: true
@@ -597,7 +592,7 @@ reports:
         zero: true
       - name: AdType
         kind: Display Name
-        enum: [ DEPRECATED_AD, IMAGE_AD, PRODUCT_AD, TEMPLATE_AD, TEXT_AD, THIRD_PARTY_REDIRECT_AD, DYNAMIC_SEARCH_AD, CALL_ONLY_AD, EXPANDED_TEXT_AD, RESPONSIVE_DISPLAY_AD, UNKNOWN ]
+        enum: [ DEPRECATED_AD, IMAGE_AD, PRODUCT_AD, TEMPLATE_AD, TEXT_AD, THIRD_PARTY_REDIRECT_AD, DYNAMIC_SEARCH_AD, CALL_ONLY_AD, EXPANDED_TEXT_AD, RESPONSIVE_DISPLAY_AD, SHOWCASE_AD, EXPANDED_DYNAMIC_SEARCH_AD, UNKNOWN ]
         zero: true
       - name: AllConversionRate
         kind: Double
@@ -610,6 +605,14 @@ reports:
       - name: AllConversionValue
         kind: Double
         notc: [ Slot ]
+        zero: true
+      - name: AllowFlexibleColor
+        kind: Enum
+        enum: [ TRUE, FALSE ]
+        zero: true
+      - name: Automated
+        kind: Enum
+        enum: [ TRUE, FALSE ]
         zero: true
       - name: AverageCost
         kind: Money
@@ -659,6 +662,9 @@ reports:
       - name: CallOnlyPhoneNumber
         kind: String
         zero: true
+      - name: CallToActionText
+        kind: String
+        zero: true
       - name: CampaignId
         kind: Long
         zero: true
@@ -687,9 +693,13 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, EngagementRate, Engagements, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, PercentNewVisitors, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, EngagementRate, Engagements, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, PercentNewVisitors, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
+        zero: true
+      - name: CombinedApprovalStatus
+        kind: PolicyApprovalStatus
+        enum: [ UNKNOWN, APPROVED, APPROVED_LIMITED, ELIGIBLE, UNDER_REVIEW, DISAPPROVED, SITE_SUSPENDED ]
         zero: true
       - name: ConversionCategoryName
         kind: String
@@ -726,9 +736,8 @@ reports:
       - name: CostPerConversion
         kind: Money
         zero: true
-      - name: CreativeApprovalStatus
-        kind: ApprovalStatus
-        enum: [ APPROVED, FAMILY_SAFE, NON_FAMILY_SAFE, PORN, UNCHECKED, DISAPPROVED ]
+      - name: CostPerCurrentModelAttributedConversion
+        kind: Double
         zero: true
       - name: CreativeDestinationUrl
         kind: String
@@ -754,7 +763,7 @@ reports:
         zero: true
       - name: CriterionType
         kind: ApiCriterionType
-        enum: [ UNKNOWN, AD_SCHEDULE, AGE_RANGE, APP_PAYMENT_MODEL, CARRIER, CONTENT_LABEL, CUSTOM_AFFINITY, GENDER, LOCATION_GROUPS, IP_BLOCK, KEYWORD, LANGUAGE, LOCATION, MOBILE_APPLICATION, MOBILE_APP_CATEGORY, MOBILE_DEVICE, OPERATING_SYSTEM_VERSION, PARENT, PLACEMENT, PLATFORM, PREFERRED_CONTENT, PRODUCT_PARTITION, PRODUCT_SCOPE, PROXIMITY, USER_INTEREST, USER_LIST, VERTICAL, WEBPAGE, YOUTUBE_CHANNEL, YOUTUBE_VIDEO ]
+        enum: [ UNKNOWN, AD_SCHEDULE, AGE_RANGE, APP_PAYMENT_MODEL, CARRIER, CONTENT_LABEL, CUSTOM_AFFINITY, GENDER, LOCATION_GROUPS, IP_BLOCK, KEYWORD, LANGUAGE, LOCATION, MOBILE_APPLICATION, MOBILE_APP_CATEGORY, MOBILE_DEVICE, OPERATING_SYSTEM_VERSION, PARENT, PLACEMENT, PLATFORM, PREFERRED_CONTENT, PRODUCT_PARTITION, PRODUCT_SCOPE, PROXIMITY, USER_INTEREST, USER_LIST, VERTICAL, WEBPAGE, YOUTUBE_CHANNEL, YOUTUBE_VIDEO, CUSTOM_IN_MARKET ]
         zero: true
       - name: CrossDeviceConversions
         kind: Double
@@ -763,6 +772,12 @@ reports:
       - name: Ctr
         kind: Double
         notc: [ ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
+        zero: true
+      - name: CurrentModelAttributedConversions
+        kind: Double
+        zero: true
+      - name: CurrentModelAttributedConversionValue
+        kind: Double
         zero: true
       - name: CustomerDescriptiveName
         kind: String
@@ -805,20 +820,30 @@ reports:
         kind: Long
         notc: [ ClickType, ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
         zero: true
+      - name: EnhancedDisplayCreativeLandscapeLogoImageMediaId
+        kind: Long
+        zero: true
       - name: EnhancedDisplayCreativeLogoImageMediaId
         kind: Long
         zero: true
       - name: EnhancedDisplayCreativeMarketingImageMediaId
         kind: Long
         zero: true
+      - name: EnhancedDisplayCreativeMarketingImageSquareMediaId
+        kind: Long
+        zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, PercentNewVisitors, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, PercentNewVisitors, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
         kind: Long
+        zero: true
+      - name: FormatSetting
+        kind: DisplayAdFormatSetting
+        enum: [ UNKNOWN, ALL_FORMATS, NON_NATIVE, NATIVE ]
         zero: true
       - name: GmailForwards
         kind: Long
@@ -851,6 +876,9 @@ reports:
         kind: Integer
         zero: true
       - name: ImageCreativeImageWidth
+        kind: Integer
+        zero: true
+      - name: ImageCreativeMimeType
         kind: Integer
         zero: true
       - name: ImageCreativeName
@@ -897,6 +925,9 @@ reports:
       - name: LongHeadline
         kind: String
         zero: true
+      - name: MainColor
+        kind: String
+        zero: true
       - name: Month
         kind: String
         sgmt: true
@@ -916,7 +947,13 @@ reports:
         kind: Double
         notc: [ ClickType, ConversionCategoryName, ConversionTrackerId, ConversionTypeName, Device, ExternalConversionSource, Slot ]
         zero: true
-      - name: PrimaryCompanyName
+      - name: PolicySummary
+        kind: AdGroupAdPolicySummary
+        zero: true
+      - name: PricePrefix
+        kind: String
+        zero: true
+      - name: PromoText
         kind: String
         zero: true
       - name: Quarter
@@ -936,14 +973,14 @@ reports:
         kind: Status
         enum: [ ENABLED, PAUSED, DISABLED ]
         zero: true
-      - name: Trademarks
-        kind: List
-        zero: true
       - name: ValuePerAllConversion
         kind: Double
         notc: [ Slot ]
         zero: true
       - name: ValuePerConversion
+        kind: Double
+        zero: true
+      - name: ValuePerCurrentModelAttributedConversion
         kind: Double
         zero: true
       - name: VideoQuartile100Rate
@@ -972,6 +1009,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -990,7 +1028,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -1039,6 +1077,10 @@ reports:
         zero: true
       - name: AdGroupTabletBidModifier
         kind: Double
+        zero: true
+      - name: AdGroupType
+        kind: AdGroupType
+        enum: [ UNKNOWN, SEARCH_STANDARD, SEARCH_DYNAMIC_ADS, DISPLAY_STANDARD, SHOPPING_PRODUCT_ADS, SHOPPING_SHOWCASE_ADS ]
         zero: true
       - name: AdNetworkType1
         kind: AdNetworkType1
@@ -1112,7 +1154,7 @@ reports:
         zero: true
       - name: BiddingStrategyType
         kind: BiddingStrategyType
-        enum: [ BUDGET_OPTIMIZER, CONVERSION_OPTIMIZER, MANUAL_CPC, MANUAL_CPV, MANUAL_CPM, PAGE_ONE_PROMOTED, TARGET_SPEND, ENHANCED_CPC, TARGET_CPA, TARGET_ROAS, TARGET_OUTRANK_SHARE, NONE, UNKNOWN ]
+        enum: [ MANUAL_CPC, MANUAL_CPV, MANUAL_CPM, PAGE_ONE_PROMOTED, TARGET_SPEND, ENHANCED_CPC, TARGET_CPA, TARGET_ROAS, MAXIMIZE_CONVERSIONS, TARGET_OUTRANK_SHARE, NONE, UNKNOWN ]
         zero: true
       - name: BidType
         kind: BidType
@@ -1150,8 +1192,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, ContentImpressionShare, ContentRankLostImpressionShare, EngagementRate, Engagements, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, PercentNewVisitors, RelativeCtr, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, ContentImpressionShare, ContentRankLostImpressionShare, EngagementRate, Engagements, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, PercentNewVisitors, RelativeCtr, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ContentBidCriterionTypeGroup
@@ -1201,6 +1243,9 @@ reports:
       - name: CostPerConversion
         kind: Money
         zero: true
+      - name: CostPerCurrentModelAttributedConversion
+        kind: Double
+        zero: true
       - name: CpcBid
         kind: Money
         zero: true
@@ -1217,6 +1262,12 @@ reports:
       - name: Ctr
         kind: Double
         notc: [ ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
+        zero: true
+      - name: CurrentModelAttributedConversions
+        kind: Double
+        zero: true
+      - name: CurrentModelAttributedConversionValue
+        kind: Double
         zero: true
       - name: CustomerDescriptiveName
         kind: String
@@ -1236,6 +1287,13 @@ reports:
         notc: [ AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, NumOfflineImpressions, NumOfflineInteractions, OfflineInteractionRate, PercentNewVisitors, RelativeCtr ]
         sgmt: true
         zero: true
+      - name: EffectiveTargetRoas
+        kind: Double
+        zero: true
+      - name: EffectiveTargetRoasSource
+        kind: BiddingSource
+        enum: [ UNKNOWN, ADGROUP, ADGROUP_BIDDING_STRATEGY, CAMPAIGN_BIDDING_STRATEGY ]
+        zero: true
       - name: EngagementRate
         kind: Double
         notc: [ ClickType, ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
@@ -1248,14 +1306,10 @@ reports:
         kind: Enum
         enum: [ TRUE, FALSE ]
         zero: true
-      - name: EnhancedCpvEnabled
-        kind: Enum
-        enum: [ TRUE, FALSE ]
-        zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, ContentImpressionShare, ContentRankLostImpressionShare, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, NumOfflineImpressions, NumOfflineInteractions, OfflineInteractionRate, PercentNewVisitors, RelativeCtr, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, ContentImpressionShare, ContentRankLostImpressionShare, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, NumOfflineImpressions, NumOfflineInteractions, OfflineInteractionRate, PercentNewVisitors, RelativeCtr, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -1337,9 +1391,6 @@ reports:
         kind: Double
         notc: [ ClickType, ConversionCategoryName, ConversionTrackerId, ConversionTypeName, Device, ExternalConversionSource, HourOfDay, Slot ]
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -1386,6 +1437,9 @@ reports:
       - name: ValuePerConversion
         kind: Double
         zero: true
+      - name: ValuePerCurrentModelAttributedConversion
+        kind: Double
+        zero: true
       - name: VideoQuartile100Rate
         kind: Double
         notc: [ ClickType, ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
@@ -1412,6 +1466,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -1430,7 +1485,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -1539,8 +1594,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ConversionCategoryName
@@ -1631,8 +1686,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -1692,9 +1747,6 @@ reports:
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -1741,6 +1793,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -1759,7 +1812,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -1796,10 +1849,12 @@ reports:
         zero: true
       - name: AdGroupName
         kind: String
+        sgmt: true
         zero: true
       - name: AdGroupStatus
         kind: AdGroupStatus
         enum: [ UNKNOWN, ENABLED, PAUSED, REMOVED ]
+        sgmt: true
         zero: true
       - name: AdNetworkType1
         kind: AdNetworkType1
@@ -1876,8 +1931,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ConversionCategoryName
@@ -1935,6 +1990,10 @@ reports:
       - name: CriteriaDestinationUrl
         kind: String
         zero: true
+      - name: CriterionAttachmentLevel
+        kind: EntityCriterionAttachmentLevel
+        enum: [ UNKNOWN, ADGROUP, CAMPAIGN, CUSTOMER ]
+        zero: true
       - name: CrossDeviceConversions
         kind: Double
         notc: [ Slot ]
@@ -1970,8 +2029,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -2014,10 +2073,6 @@ reports:
         kind: EnumSet
         notc: [ ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
         zero: true
-      - name: IsNegative
-        kind: Enum
-        enum: [ TRUE, FALSE ]
-        zero: true
       - name: IsRestrict
         kind: Enum
         enum: [ TRUE, FALSE ]
@@ -2030,9 +2085,6 @@ reports:
         kind: MonthOfYear
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
         zero: true
       - name: Quarter
         kind: String
@@ -2090,6 +2142,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -2108,7 +2161,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -2279,8 +2332,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -2321,9 +2374,6 @@ reports:
         kind: MonthOfYear
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
         zero: true
       - name: Quarter
         kind: String
@@ -2397,11 +2447,23 @@ reports:
         kind: Long
         notc: [ ExternalConversionSource ]
         zero: true
+      - name: ConversionCategoryName
+        kind: String
+        sgmt: true
+        zero: true
       - name: ConversionRate
         kind: Double
         zero: true
       - name: Conversions
         kind: Double
+        zero: true
+      - name: ConversionTrackerId
+        kind: Long
+        sgmt: true
+        zero: true
+      - name: ConversionTypeName
+        kind: String
+        sgmt: true
         zero: true
       - name: ConversionValue
         kind: Double
@@ -2441,8 +2503,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCpc, AverageCpm, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, Impressions, ValuePerConversion ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCpc, AverageCpm, AveragePosition, Clicks, Cost, Ctr, Impressions ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -2509,10 +2571,6 @@ reports:
         kind: BiddingStrategyStatus
         enum: [ ENABLED, REMOVED, UNKNOWN ]
         zero: true
-      - name: SystemStatus
-        kind: BiddingStrategySystemStatus
-        enum: [ UNKNOWN, UNCONSTRAINED, LEARNING_NEW, LEARNING_SETTING_CHANGE, LEARNING_BUDGET_CHANGE, LEARNING_COMPOSITION_CHANGE, LEARNING_CONVERSION_TYPE_CHANGE, LEARNING_CONVERSION_SETTING_CHANGE, LIMITED_BY_BID_CONSTRAINTS, LIMITED_BY_MAX_BID_LIMIT, LIMITED_BY_MIN_BID_LIMIT, LIMITED_BY_MIN_ROAS_LIMIT, LIMITED_BY_DATA, LIMITED_BY_BUDGET, LIMITED_BY_LOW_PRIORITY_SPEND, LIMITED_BY_LOW_QUALITY, MISCONFIGURED_CONVERSION_TYPES, MISCONFIGURED_CONVERSION_SETTINGS, INACTIVE, UNAVAILABLE, MULTIPLE_LEARNING, MULTIPLE_LIMITED, MULTIPLE_MISCONFIGURED, MULTIPLE ]
-        zero: true
       - name: TargetCpa
         kind: Money
         zero: true
@@ -2556,7 +2614,7 @@ reports:
         zero: true
       - name: Type
         kind: BiddingStrategyType
-        enum: [ BUDGET_OPTIMIZER, CONVERSION_OPTIMIZER, MANUAL_CPC, MANUAL_CPV, MANUAL_CPM, PAGE_ONE_PROMOTED, TARGET_SPEND, ENHANCED_CPC, TARGET_CPA, TARGET_ROAS, TARGET_OUTRANK_SHARE, NONE, UNKNOWN ]
+        enum: [ MANUAL_CPC, MANUAL_CPV, MANUAL_CPM, PAGE_ONE_PROMOTED, TARGET_SPEND, ENHANCED_CPC, TARGET_CPA, TARGET_ROAS, MAXIMIZE_CONVERSIONS, TARGET_OUTRANK_SHARE, NONE, UNKNOWN ]
         zero: true
       - name: ValuePerAllConversion
         kind: Double
@@ -2725,7 +2783,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AdGroupId
@@ -2798,9 +2856,6 @@ reports:
         kind: MonthOfYear
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         zero: true
@@ -2819,7 +2874,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AllConversionRate
@@ -2872,11 +2927,23 @@ reports:
         kind: Long
         notc: [ ExternalConversionSource ]
         zero: true
+      - name: ConversionCategoryName
+        kind: String
+        sgmt: true
+        zero: true
       - name: ConversionRate
         kind: Double
         zero: true
       - name: Conversions
         kind: Double
+        zero: true
+      - name: ConversionTrackerId
+        kind: Long
+        sgmt: true
+        zero: true
+      - name: ConversionTypeName
+        kind: String
+        sgmt: true
         zero: true
       - name: ConversionValue
         kind: Double
@@ -2915,8 +2982,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -2949,9 +3016,6 @@ reports:
         kind: MonthOfYear
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
         zero: true
       - name: Quarter
         kind: String
@@ -3007,7 +3071,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AllConversionRate
@@ -3103,8 +3167,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -3141,9 +3205,6 @@ reports:
         kind: MonthOfYear
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
         zero: true
       - name: Quarter
         kind: String
@@ -3183,7 +3244,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: BaseCampaignId
@@ -3219,9 +3280,6 @@ reports:
         kind: KeywordMatchType
         enum: [ EXACT, PHRASE, BROAD ]
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
   - name: CAMPAIGN_NEGATIVE_LOCATIONS_REPORT
     aggr: Id
     cols: 
@@ -3231,7 +3289,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: BaseCampaignId
@@ -3260,9 +3318,6 @@ reports:
         kind: Enum
         enum: [ TRUE, FALSE ]
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
   - name: CAMPAIGN_NEGATIVE_PLACEMENTS_PERFORMANCE_REPORT
     aggr: Id
     cols: 
@@ -3272,7 +3327,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: BaseCampaignId
@@ -3311,8 +3366,8 @@ reports:
         kind: KeywordMatchType
         enum: [ EXACT, PHRASE, BROAD ]
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
+      - name: VerticalId
+        kind: Long
         zero: true
   - name: CAMPAIGN_PERFORMANCE_REPORT
     aggr: CampaignId
@@ -3323,7 +3378,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -3434,7 +3489,7 @@ reports:
         zero: true
       - name: BiddingStrategyType
         kind: BiddingStrategyType
-        enum: [ BUDGET_OPTIMIZER, CONVERSION_OPTIMIZER, MANUAL_CPC, MANUAL_CPV, MANUAL_CPM, PAGE_ONE_PROMOTED, TARGET_SPEND, ENHANCED_CPC, TARGET_CPA, TARGET_ROAS, TARGET_OUTRANK_SHARE, NONE, UNKNOWN ]
+        enum: [ MANUAL_CPC, MANUAL_CPV, MANUAL_CPM, PAGE_ONE_PROMOTED, TARGET_SPEND, ENHANCED_CPC, TARGET_CPA, TARGET_ROAS, MAXIMIZE_CONVERSIONS, TARGET_OUTRANK_SHARE, NONE, UNKNOWN ]
         zero: true
       - name: BidType
         kind: BidType
@@ -3449,6 +3504,9 @@ reports:
         zero: true
       - name: CampaignDesktopBidModifier
         kind: Double
+        zero: true
+      - name: CampaignGroupId
+        kind: Long
         zero: true
       - name: CampaignId
         kind: Long
@@ -3488,8 +3546,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, AverageFrequency, AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, ContentBudgetLostImpressionShare, ContentImpressionShare, ContentRankLostImpressionShare, EngagementRate, Engagements, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, ImpressionReach, PercentNewVisitors, RelativeCtr, SearchBudgetLostImpressionShare, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, AverageFrequency, AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, ContentBudgetLostImpressionShare, ContentImpressionShare, ContentRankLostImpressionShare, EngagementRate, Engagements, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, ImpressionReach, PercentNewVisitors, RelativeCtr, SearchBudgetLostImpressionShare, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ContentBudgetLostImpressionShare
@@ -3539,6 +3597,9 @@ reports:
       - name: CostPerConversion
         kind: Money
         zero: true
+      - name: CostPerCurrentModelAttributedConversion
+        kind: Double
+        zero: true
       - name: CrossDeviceConversions
         kind: Double
         notc: [ HourOfDay, Slot ]
@@ -3546,6 +3607,12 @@ reports:
       - name: Ctr
         kind: Double
         notc: [ ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
+        zero: true
+      - name: CurrentModelAttributedConversions
+        kind: Double
+        zero: true
+      - name: CurrentModelAttributedConversionValue
+        kind: Double
         zero: true
       - name: CustomerDescriptiveName
         kind: String
@@ -3581,14 +3648,10 @@ reports:
         kind: Enum
         enum: [ TRUE, FALSE ]
         zero: true
-      - name: EnhancedCpvEnabled
-        kind: Enum
-        enum: [ TRUE, FALSE ]
-        zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AverageFrequency, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, ContentBudgetLostImpressionShare, ContentImpressionShare, ContentRankLostImpressionShare, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, ImpressionReach, Impressions, InteractionRate, InteractionTypes, Interactions, InvalidClickRate, InvalidClicks, NumOfflineImpressions, NumOfflineInteractions, OfflineInteractionRate, PercentNewVisitors, RelativeCtr, SearchBudgetLostImpressionShare, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AverageFrequency, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, ContentBudgetLostImpressionShare, ContentImpressionShare, ContentRankLostImpressionShare, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, ImpressionReach, Impressions, InteractionRate, InteractionTypes, Interactions, InvalidClickRate, InvalidClicks, NumOfflineImpressions, NumOfflineInteractions, OfflineInteractionRate, PercentNewVisitors, RelativeCtr, SearchBudgetLostImpressionShare, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -3689,9 +3752,6 @@ reports:
       - name: Period
         kind: BudgetPeriod
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         notc: [ AverageFrequency, ImpressionReach ]
@@ -3743,6 +3803,9 @@ reports:
       - name: ValuePerConversion
         kind: Double
         zero: true
+      - name: ValuePerCurrentModelAttributedConversion
+        kind: Double
+        zero: true
       - name: VideoQuartile100Rate
         kind: Double
         notc: [ ClickType, ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
@@ -3769,6 +3832,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -3777,184 +3841,6 @@ reports:
       - name: Year
         kind: Integer
         notc: [ AverageFrequency, ImpressionReach ]
-        sgmt: true
-        zero: true
-  - name: CAMPAIGN_PLATFORM_TARGET_REPORT
-    aggr: Id
-    cols: 
-      - name: AccountCurrencyCode
-        kind: String
-        zero: true
-      - name: AccountDescriptiveName
-        kind: String
-        zero: true
-      - name: AccountTimeZoneId
-        kind: String
-        zero: true
-      - name: AllConversionRate
-        kind: Double
-        zero: true
-      - name: AllConversions
-        kind: Double
-        zero: true
-      - name: AllConversionValue
-        kind: Double
-        zero: true
-      - name: AverageCost
-        kind: Money
-        zero: true
-      - name: AverageCpc
-        kind: Money
-        zero: true
-      - name: AverageCpe
-        kind: Double
-        zero: true
-      - name: AverageCpm
-        kind: Money
-        zero: true
-      - name: AverageCpv
-        kind: Double
-        zero: true
-      - name: AveragePosition
-        kind: Double
-        zero: true
-      - name: BidModifier
-        kind: Double
-        zero: true
-      - name: CampaignId
-        kind: Long
-        zero: true
-      - name: CampaignName
-        kind: String
-        zero: true
-      - name: CampaignStatus
-        kind: CampaignStatus
-        enum: [ UNKNOWN, ENABLED, PAUSED, REMOVED ]
-        zero: true
-      - name: ClickConversionRate
-        kind: Double
-        zero: true
-      - name: Clicks
-        kind: Long
-        zero: true
-      - name: ConversionRate
-        kind: Double
-        zero: true
-      - name: Conversions
-        kind: Double
-        zero: true
-      - name: ConversionValue
-        kind: Double
-        zero: true
-      - name: ConvertedClicks
-        kind: Long
-        zero: true
-      - name: Cost
-        kind: Money
-        zero: true
-      - name: CostPerAllConversion
-        kind: Money
-        zero: true
-      - name: CostPerConversion
-        kind: Money
-        zero: true
-      - name: CostPerConvertedClick
-        kind: Money
-        zero: true
-      - name: CrossDeviceConversions
-        kind: Double
-        zero: true
-      - name: Ctr
-        kind: Double
-        zero: true
-      - name: CustomerDescriptiveName
-        kind: String
-        zero: true
-      - name: Date
-        kind: Date
-        sgmt: true
-        zero: true
-      - name: Device
-        kind: DeviceType
-        enum: [ UNKNOWN, DESKTOP, HIGH_END_MOBILE, TABLET ]
-        sgmt: true
-        zero: true
-      - name: EngagementRate
-        kind: Double
-        zero: true
-      - name: Engagements
-        kind: Long
-        zero: true
-      - name: ExternalCustomerId
-        kind: Long
-        zero: true
-      - name: Id
-        kind: Long
-        zero: true
-      - name: Impressions
-        kind: Long
-        zero: true
-      - name: InteractionRate
-        kind: Double
-        zero: true
-      - name: Interactions
-        kind: Long
-        zero: true
-      - name: InteractionTypes
-        kind: EnumSet
-        zero: true
-      - name: Month
-        kind: String
-        sgmt: true
-        zero: true
-      - name: MonthOfYear
-        kind: MonthOfYear
-        enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
-        sgmt: true
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
-      - name: Quarter
-        kind: String
-        sgmt: true
-        zero: true
-      - name: ValuePerAllConversion
-        kind: Double
-        zero: true
-      - name: ValuePerConversion
-        kind: Double
-        zero: true
-      - name: ValuePerConvertedClick
-        kind: Double
-        zero: true
-      - name: VideoQuartile100Rate
-        kind: Double
-        zero: true
-      - name: VideoQuartile25Rate
-        kind: Double
-        zero: true
-      - name: VideoQuartile50Rate
-        kind: Double
-        zero: true
-      - name: VideoQuartile75Rate
-        kind: Double
-        zero: true
-      - name: VideoViewRate
-        kind: Double
-        zero: true
-      - name: VideoViews
-        kind: Long
-        zero: true
-      - name: ViewThroughConversions
-        kind: Long
-        zero: true
-      - name: Week
-        kind: String
-        sgmt: true
-        zero: true
-      - name: Year
-        kind: Integer
         sgmt: true
         zero: true
   - name: CAMPAIGN_SHARED_SET_REPORT
@@ -4048,7 +3934,7 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
         zero: true
       - name: CreativeId
         kind: Long
@@ -4114,7 +4000,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AdGroupId
@@ -4191,9 +4077,6 @@ reports:
         kind: String
         sgmt: true
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -4215,7 +4098,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -4335,8 +4218,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ConversionCategoryName
@@ -4374,6 +4257,9 @@ reports:
       - name: CostPerConversion
         kind: Money
         zero: true
+      - name: CostPerCurrentModelAttributedConversion
+        kind: Double
+        zero: true
       - name: CpcBid
         kind: Money
         zero: true
@@ -4403,7 +4289,7 @@ reports:
         zero: true
       - name: CriteriaType
         kind: Display Name
-        enum: [ CONTENT_LABEL, KEYWORD, PLACEMENT, VERTICAL, USER_LIST, USER_INTEREST, MOBILE_APPLICATION, MOBILE_APP_CATEGORY, PRODUCT_PARTITION, IP_BLOCK, WEBPAGE, LANGUAGE, LOCATION, AGE_RANGE, CARRIER, OPERATING_SYSTEM_VERSION, MOBILE_DEVICE, GENDER, PARENT, PROXIMITY, PLATFORM, PREFERRED_CONTENT, AD_SCHEDULE, LOCATION_GROUPS, PRODUCT_SCOPE, CUSTOM_AFFINITY, YOUTUBE_VIDEO, YOUTUBE_CHANNEL, APP_PAYMENT_MODEL, UNKNOWN ]
+        enum: [ CONTENT_LABEL, KEYWORD, PLACEMENT, VERTICAL, USER_LIST, USER_INTEREST, MOBILE_APPLICATION, MOBILE_APP_CATEGORY, PRODUCT_PARTITION, IP_BLOCK, WEBPAGE, LANGUAGE, LOCATION, AGE_RANGE, CARRIER, OPERATING_SYSTEM_VERSION, MOBILE_DEVICE, GENDER, PARENT, PROXIMITY, PLATFORM, PREFERRED_CONTENT, AD_SCHEDULE, LOCATION_GROUPS, PRODUCT_SCOPE, CUSTOM_AFFINITY, CUSTOM_IN_MARKET, YOUTUBE_VIDEO, YOUTUBE_CHANNEL, APP_PAYMENT_MODEL, INCOME_RANGE, INTERACTION_TYPE, UNKNOWN ]
         zero: true
       - name: CrossDeviceConversions
         kind: Double
@@ -4412,6 +4298,12 @@ reports:
       - name: Ctr
         kind: Double
         notc: [ ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
+        zero: true
+      - name: CurrentModelAttributedConversions
+        kind: Double
+        zero: true
+      - name: CurrentModelAttributedConversionValue
+        kind: Double
         zero: true
       - name: CustomerDescriptiveName
         kind: String
@@ -4445,10 +4337,6 @@ reports:
         kind: Enum
         enum: [ TRUE, FALSE ]
         zero: true
-      - name: EnhancedCpvEnabled
-        kind: Enum
-        enum: [ TRUE, FALSE ]
-        zero: true
       - name: EstimatedAddClicksAtFirstPositionCpc
         kind: Long
         zero: true
@@ -4457,8 +4345,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -4540,9 +4428,6 @@ reports:
         kind: QualityScoreBucket
         enum: [ UNKNOWN, BELOW_AVERAGE, AVERAGE, ABOVE_AVERAGE ]
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: QualityScore
         kind: Integer
         zero: true
@@ -4584,6 +4469,12 @@ reports:
       - name: ValuePerConversion
         kind: Double
         zero: true
+      - name: ValuePerCurrentModelAttributedConversion
+        kind: Double
+        zero: true
+      - name: VerticalId
+        kind: Long
+        zero: true
       - name: VideoQuartile100Rate
         kind: Double
         notc: [ ClickType, ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
@@ -4610,6 +4501,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -4628,7 +4520,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -4731,8 +4623,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ConversionCategoryName
@@ -4770,6 +4662,9 @@ reports:
       - name: CostPerConversion
         kind: Money
         zero: true
+      - name: CostPerCurrentModelAttributedConversion
+        kind: Double
+        zero: true
       - name: CriteriaDestinationUrl
         kind: String
         zero: true
@@ -4790,6 +4685,12 @@ reports:
       - name: Ctr
         kind: Double
         notc: [ ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
+        zero: true
+      - name: CurrentModelAttributedConversions
+        kind: Double
+        zero: true
+      - name: CurrentModelAttributedConversionValue
+        kind: Double
         zero: true
       - name: CustomerDescriptiveName
         kind: String
@@ -4821,8 +4722,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -4869,9 +4770,6 @@ reports:
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -4887,6 +4785,9 @@ reports:
         notc: [ Slot ]
         zero: true
       - name: ValuePerConversion
+        kind: Double
+        zero: true
+      - name: ValuePerCurrentModelAttributedConversion
         kind: Double
         zero: true
       - name: VideoQuartile100Rate
@@ -4915,6 +4816,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -4933,7 +4835,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -5039,8 +4941,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ConversionCategoryName
@@ -5138,8 +5040,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -5199,9 +5101,6 @@ reports:
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -5248,6 +5147,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -5266,7 +5166,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -5375,8 +5275,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ConversionCategoryName
@@ -5467,8 +5367,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -5528,9 +5428,6 @@ reports:
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -5550,6 +5447,9 @@ reports:
         zero: true
       - name: ValuePerConversion
         kind: Double
+        zero: true
+      - name: VerticalId
+        kind: Long
         zero: true
       - name: VideoQuartile100Rate
         kind: Double
@@ -5577,6 +5477,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -5595,7 +5496,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -5702,7 +5603,7 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
         notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
@@ -5789,7 +5690,7 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
         notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
@@ -5820,9 +5721,6 @@ reports:
         kind: MonthOfYear
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
         zero: true
       - name: Quarter
         kind: String
@@ -5866,7 +5764,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -5975,8 +5873,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ConversionCategoryName
@@ -6067,8 +5965,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -6128,9 +6026,6 @@ reports:
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -6177,6 +6072,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -6195,7 +6091,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AdFormat
@@ -6335,8 +6231,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCost, AverageCpc, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCost, AverageCpc, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, Ctr, Impressions, InteractionRate, InteractionTypes, Interactions, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -6382,9 +6278,6 @@ reports:
       - name: MostSpecificCriteriaId
         kind: Long
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -6426,7 +6319,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AdGroupId
@@ -6540,8 +6433,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCpc, AverageCpm, Clicks, Cost, CostPerConversion, Ctr, Impressions, ValuePerConversion ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCpc, AverageCpm, Clicks, Cost, Ctr, Impressions ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -6559,9 +6452,6 @@ reports:
         kind: MonthOfYear
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
         zero: true
       - name: Quarter
         kind: String
@@ -6590,7 +6480,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AdGroupId
@@ -6698,8 +6588,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCpc, AverageCpm, Clicks, Cost, CostPerConversion, Ctr, Impressions, ValuePerConversion ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCpc, AverageCpm, Clicks, Cost, Ctr, Impressions ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -6721,15 +6611,16 @@ reports:
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
         zero: true
       - name: Query
         kind: String
+        zero: true
+      - name: QueryTargetingStatus
+        kind: QueryTargetingStatus
+        enum: [ ADDED, EXCLUDED, BOTH, NONE ]
         zero: true
       - name: Title
         kind: String
@@ -6760,7 +6651,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -6804,11 +6695,13 @@ reports:
       - name: AdNetworkType1
         kind: AdNetworkType1
         enum: [ UNKNOWN, SEARCH, CONTENT, YOUTUBE_SEARCH, YOUTUBE_WATCH ]
+        notc: [ HistoricalCreativeQualityScore, HistoricalLandingPageQualityScore, HistoricalQualityScore, HistoricalSearchPredictedCtr ]
         sgmt: true
         zero: true
       - name: AdNetworkType2
         kind: AdNetworkType2
         enum: [ UNKNOWN, SEARCH, SEARCH_PARTNERS, CONTENT, YOUTUBE_SEARCH, YOUTUBE_WATCH ]
+        notc: [ HistoricalCreativeQualityScore, HistoricalLandingPageQualityScore, HistoricalQualityScore, HistoricalSearchPredictedCtr ]
         sgmt: true
         zero: true
       - name: AllConversionRate
@@ -6877,7 +6770,7 @@ reports:
         zero: true
       - name: BiddingStrategyType
         kind: BiddingStrategyType
-        enum: [ BUDGET_OPTIMIZER, CONVERSION_OPTIMIZER, MANUAL_CPC, MANUAL_CPV, MANUAL_CPM, PAGE_ONE_PROMOTED, TARGET_SPEND, ENHANCED_CPC, TARGET_CPA, TARGET_ROAS, TARGET_OUTRANK_SHARE, NONE, UNKNOWN ]
+        enum: [ MANUAL_CPC, MANUAL_CPV, MANUAL_CPM, PAGE_ONE_PROMOTED, TARGET_SPEND, ENHANCED_CPC, TARGET_CPA, TARGET_ROAS, MAXIMIZE_CONVERSIONS, TARGET_OUTRANK_SHARE, NONE, UNKNOWN ]
         zero: true
       - name: BidType
         kind: BidType
@@ -6915,13 +6808,13 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, EngagementRate, Engagements, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, EngagementRate, Engagements, HistoricalCreativeQualityScore, HistoricalLandingPageQualityScore, HistoricalQualityScore, HistoricalSearchPredictedCtr, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ConversionCategoryName
         kind: String
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, HistoricalCreativeQualityScore, HistoricalLandingPageQualityScore, HistoricalQualityScore, HistoricalSearchPredictedCtr, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ConversionRate
@@ -6932,12 +6825,12 @@ reports:
         zero: true
       - name: ConversionTrackerId
         kind: Long
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, HistoricalCreativeQualityScore, HistoricalLandingPageQualityScore, HistoricalQualityScore, HistoricalSearchPredictedCtr, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ConversionTypeName
         kind: String
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, HistoricalCreativeQualityScore, HistoricalLandingPageQualityScore, HistoricalQualityScore, HistoricalSearchPredictedCtr, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ConversionValue
@@ -6953,6 +6846,9 @@ reports:
         zero: true
       - name: CostPerConversion
         kind: Money
+        zero: true
+      - name: CostPerCurrentModelAttributedConversion
+        kind: Double
         zero: true
       - name: CpcBid
         kind: Money
@@ -6982,6 +6878,12 @@ reports:
         kind: Double
         notc: [ ConversionCategoryName, ConversionTrackerId, ConversionTypeName, ExternalConversionSource ]
         zero: true
+      - name: CurrentModelAttributedConversions
+        kind: Double
+        zero: true
+      - name: CurrentModelAttributedConversionValue
+        kind: Double
+        zero: true
       - name: CustomerDescriptiveName
         kind: String
         zero: true
@@ -6997,7 +6899,7 @@ reports:
       - name: Device
         kind: DeviceType
         enum: [ UNKNOWN, DESKTOP, HIGH_END_MOBILE, TABLET ]
-        notc: [ AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, PercentNewVisitors ]
+        notc: [ AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, HistoricalCreativeQualityScore, HistoricalLandingPageQualityScore, HistoricalQualityScore, HistoricalSearchPredictedCtr, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, PercentNewVisitors ]
         sgmt: true
         zero: true
       - name: EngagementRate
@@ -7020,8 +6922,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePageviews, AveragePosition, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, Clicks, Cost, Ctr, EngagementRate, Engagements, GmailForwards, GmailSaves, GmailSecondaryClicks, HistoricalCreativeQualityScore, HistoricalLandingPageQualityScore, HistoricalQualityScore, HistoricalSearchPredictedCtr, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, Impressions, InteractionRate, InteractionTypes, Interactions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -7057,6 +6959,25 @@ reports:
       - name: HasQualityScore
         kind: Enum
         enum: [ TRUE, FALSE ]
+        zero: true
+      - name: HistoricalCreativeQualityScore
+        kind: QualityScoreBucket
+        enum: [ UNKNOWN, BELOW_AVERAGE, AVERAGE, ABOVE_AVERAGE ]
+        notc: [ AdNetworkType1, AdNetworkType2, ClickType, ConversionCategoryName, ConversionTrackerId, ConversionTypeName, Device, ExternalConversionSource, Slot ]
+        zero: true
+      - name: HistoricalLandingPageQualityScore
+        kind: QualityScoreBucket
+        enum: [ UNKNOWN, BELOW_AVERAGE, AVERAGE, ABOVE_AVERAGE ]
+        notc: [ AdNetworkType1, AdNetworkType2, ClickType, ConversionCategoryName, ConversionTrackerId, ConversionTypeName, Device, ExternalConversionSource, Slot ]
+        zero: true
+      - name: HistoricalQualityScore
+        kind: Integer
+        notc: [ AdNetworkType1, AdNetworkType2, ClickType, ConversionCategoryName, ConversionTrackerId, ConversionTypeName, Device, ExternalConversionSource, Slot ]
+        zero: true
+      - name: HistoricalSearchPredictedCtr
+        kind: QualityScoreBucket
+        enum: [ UNKNOWN, BELOW_AVERAGE, AVERAGE, ABOVE_AVERAGE ]
+        notc: [ AdNetworkType1, AdNetworkType2, ClickType, ConversionCategoryName, ConversionTrackerId, ConversionTypeName, Device, ExternalConversionSource, Slot ]
         zero: true
       - name: Id
         kind: Long
@@ -7120,9 +7041,6 @@ reports:
         kind: QualityScoreBucket
         enum: [ UNKNOWN, BELOW_AVERAGE, AVERAGE, ABOVE_AVERAGE ]
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: QualityScore
         kind: Integer
         zero: true
@@ -7149,7 +7067,7 @@ reports:
       - name: Slot
         kind: Slot
         enum: [ SearchRhs, SearchTop, SearchOther, Content, AfsTop, AfsOther, Unknown ]
-        notc: [ AllConversionRate, AllConversionValue, AllConversions, AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, CostPerAllConversion, CrossDeviceConversions, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, ValuePerAllConversion ]
+        notc: [ AllConversionRate, AllConversionValue, AllConversions, AveragePageviews, AverageTimeOnSite, BounceRate, ClickAssistedConversionValue, ClickAssistedConversions, ClickAssistedConversionsOverLastClickConversions, CostPerAllConversion, CrossDeviceConversions, HistoricalCreativeQualityScore, HistoricalLandingPageQualityScore, HistoricalQualityScore, HistoricalSearchPredictedCtr, ImpressionAssistedConversionValue, ImpressionAssistedConversions, ImpressionAssistedConversionsOverLastClickConversions, PercentNewVisitors, SearchExactMatchImpressionShare, SearchImpressionShare, SearchRankLostImpressionShare, ValuePerAllConversion ]
         sgmt: true
         zero: true
       - name: Status
@@ -7175,6 +7093,12 @@ reports:
         zero: true
       - name: ValuePerConversion
         kind: Double
+        zero: true
+      - name: ValuePerCurrentModelAttributedConversion
+        kind: Double
+        zero: true
+      - name: VerticalId
+        kind: Long
         zero: true
       - name: VideoQuartile100Rate
         kind: Double
@@ -7202,6 +7126,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -7250,7 +7175,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AdGroupId
@@ -7345,9 +7270,6 @@ reports:
       - name: OrganicQueries
         kind: Long
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -7382,7 +7304,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -7491,7 +7413,7 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
         notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
@@ -7578,8 +7500,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -7638,9 +7560,6 @@ reports:
         kind: MonthOfYear
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
         zero: true
       - name: Quarter
         kind: String
@@ -7707,7 +7626,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AdGroupId
@@ -7794,7 +7713,7 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
         notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, IsSelfAction, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
@@ -7880,8 +7799,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -7945,9 +7864,6 @@ reports:
         zero: true
       - name: PlaceholderType
         kind: Integer
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
         zero: true
       - name: Quarter
         kind: String
@@ -8082,7 +7998,7 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
         notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
@@ -8159,8 +8075,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -8237,7 +8153,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -8346,8 +8262,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpe, AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ConversionCategoryName
@@ -8441,8 +8357,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -8502,9 +8418,6 @@ reports:
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -8551,6 +8464,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
@@ -8624,7 +8538,7 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
         notc: [ BenchmarkAverageMaxCpc, BenchmarkCtr, SearchClickShare, SearchImpressionShare ]
         sgmt: true
         zero: true
@@ -8747,7 +8661,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AdFormat
@@ -8896,8 +8810,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, AveragePosition, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -8937,9 +8851,6 @@ reports:
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
         zero: true
-      - name: PrimaryCompanyName
-        kind: String
-        zero: true
       - name: Quarter
         kind: String
         sgmt: true
@@ -8951,6 +8862,10 @@ reports:
         kind: QueryMatchTypeWithVariant
         enum: [ AUTO, BROAD, EXACT, EXPANDED, PHRASE, NEAR_EXACT, NEAR_PHRASE ]
         sgmt: true
+        zero: true
+      - name: QueryTargetingStatus
+        kind: QueryTargetingStatus
+        enum: [ ADDED, EXCLUDED, BOTH, NONE ]
         zero: true
       - name: TrackingUrlTemplate
         kind: String
@@ -9079,12 +8994,15 @@ reports:
         zero: true
       - name: AllConversionRate
         kind: Double
+        notc: [ ProductTitle ]
         zero: true
       - name: AllConversions
         kind: Double
+        notc: [ ProductTitle ]
         zero: true
       - name: AllConversionValue
         kind: Double
+        notc: [ ProductTitle ]
         zero: true
       - name: AverageCpc
         kind: Money
@@ -9135,33 +9053,36 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
         notc: [ SearchClickShare, SearchImpressionShare ]
         sgmt: true
         zero: true
       - name: ConversionCategoryName
         kind: String
-        notc: [ AverageCpc, Clicks, ConversionRate, Conversions, Cost, CostPerConversion, Ctr, Impressions, SearchClickShare, SearchImpressionShare ]
+        notc: [ AverageCpc, Clicks, Cost, Ctr, Impressions, SearchClickShare, SearchImpressionShare ]
         sgmt: true
         zero: true
       - name: ConversionRate
         kind: Double
+        notc: [ ProductTitle ]
         zero: true
       - name: Conversions
         kind: Double
+        notc: [ ProductTitle ]
         zero: true
       - name: ConversionTrackerId
         kind: Long
-        notc: [ AverageCpc, Clicks, ConversionRate, Conversions, Cost, CostPerConversion, Ctr, Impressions, SearchClickShare, SearchImpressionShare ]
+        notc: [ AverageCpc, Clicks, Cost, Ctr, Impressions, SearchClickShare, SearchImpressionShare ]
         sgmt: true
         zero: true
       - name: ConversionTypeName
         kind: String
-        notc: [ AverageCpc, Clicks, ConversionRate, Conversions, Cost, CostPerConversion, Ctr, Impressions, SearchClickShare, SearchImpressionShare ]
+        notc: [ AverageCpc, Clicks, Cost, Ctr, Impressions, SearchClickShare, SearchImpressionShare ]
         sgmt: true
         zero: true
       - name: ConversionValue
         kind: Double
+        notc: [ ProductTitle ]
         zero: true
       - name: Cost
         kind: Money
@@ -9169,15 +9090,18 @@ reports:
         zero: true
       - name: CostPerAllConversion
         kind: Money
+        notc: [ ProductTitle ]
         zero: true
       - name: CostPerConversion
         kind: Money
+        notc: [ ProductTitle ]
         zero: true
       - name: CountryCriteriaId
         kind: Integer
         zero: true
       - name: CrossDeviceConversions
         kind: Double
+        notc: [ ProductTitle ]
         zero: true
       - name: Ctr
         kind: Double
@@ -9214,8 +9138,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCpc, Clicks, Cost, CostPerConversion, Ctr, Impressions, SearchClickShare, SearchImpressionShare, ValuePerConversion ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCpc, Clicks, Cost, Ctr, Impressions, SearchClickShare, SearchImpressionShare ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -9242,6 +9166,10 @@ reports:
         kind: ShoppingProductCondition
         enum: [ UNKNOWN, NEW, REFURBISHED, USED ]
         sgmt: true
+        zero: true
+      - name: ProductTitle
+        kind: String
+        notc: [ AllConversionRate, AllConversionValue, AllConversions, ConversionRate, ConversionValue, Conversions, CostPerAllConversion, CostPerConversion, CrossDeviceConversions, ValuePerAllConversion, ValuePerConversion ]
         zero: true
       - name: ProductTypeL1
         kind: String
@@ -9276,9 +9204,11 @@ reports:
         zero: true
       - name: ValuePerAllConversion
         kind: Double
+        notc: [ ProductTitle ]
         zero: true
       - name: ValuePerConversion
         kind: Double
+        notc: [ ProductTitle ]
         zero: true
       - name: Week
         kind: String
@@ -9297,7 +9227,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: ActiveViewCpm
@@ -9477,8 +9407,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, ValuePerConversion, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ ActiveViewCpm, ActiveViewCtr, ActiveViewImpressions, ActiveViewMeasurability, ActiveViewMeasurableCost, ActiveViewMeasurableImpressions, ActiveViewViewability, AverageCost, AverageCpc, AverageCpe, AverageCpm, AverageCpv, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, InteractionRate, InteractionTypes, Interactions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -9519,9 +9449,6 @@ reports:
         kind: MonthOfYear
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
         zero: true
       - name: Quarter
         kind: String
@@ -9580,7 +9507,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AdNetworkType1
@@ -9687,8 +9614,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCpc, AverageCpm, AveragePosition, Clicks, Cost, CostPerConversion, Ctr, Impressions, ValuePerConversion ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCpc, AverageCpm, AveragePosition, Clicks, Cost, Ctr, Impressions ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -9706,9 +9633,6 @@ reports:
         kind: MonthOfYear
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
         zero: true
       - name: Quarter
         kind: String
@@ -9822,7 +9746,7 @@ reports:
       - name: AccountDescriptiveName
         kind: String
         zero: true
-      - name: AccountTimeZoneId
+      - name: AccountTimeZone
         kind: String
         zero: true
       - name: AdGroupId
@@ -9869,8 +9793,8 @@ reports:
         zero: true
       - name: ClickType
         kind: ClickType
-        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, TABLE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, UNKNOWN ]
-        notc: [ AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ URL_CLICKS, CALLS, OTHER, PRODUCT_EXTENSION_CLICKS, SITELINKS, PRODUCT_LISTING_AD_CLICKS, GET_DIRECTIONS, OFFER_PRINTS, BREADCRUMBS, CALL_TRACKING, MOBILE_CALL_TRACKING, LOCATION_EXPANSION, STORE_LOCATOR, APP_DEEPLINK, PRICE_EXTENSION, VIDEO_WEBSITE_CLICKS, VIDEO_CALL_TO_ACTION_CLICKS, VIDEO_APP_STORE_CLICKS, VIDEO_CARD_ACTION_HEADLINE_CLICKS, VIDEO_END_CAP_CLICKS, CLICK_ON_ENGAGEMENT_AD, LOCATION_FORMAT_MAP, LOCATION_FORMAT_LANDING_PAGE, LOCATION_FORMAT_STORE_INFO, LOCATION_FORMAT_DIRECTIONS, LOCATION_FORMAT_CALL, LOCATION_FORMAT_TEXT, LOCATION_FORMAT_IMAGE, BROADBAND_PLAN, WIRELESS_PLAN, VISUAL_SITELINKS, PROMOTION_EXTENSION, UNKNOWN ]
+        notc: [ AverageCpv, EngagementRate, Engagements, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews, ViewThroughConversions ]
         sgmt: true
         zero: true
       - name: ConversionCategoryName
@@ -9937,8 +9861,8 @@ reports:
         zero: true
       - name: ExternalConversionSource
         kind: ExternalConversionSource
-        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY ]
-        notc: [ AverageCpm, AverageCpv, Clicks, Cost, CostPerConversion, Ctr, EngagementRate, Engagements, Impressions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
+        enum: [ UNKNOWN, WEBPAGE, ANALYTICS, UPLOAD, AD_CALL_METRICS, OFFERS, ENGAGEMENT, WEBSITE_CALL_METRICS, STORE_VISITS, ANDROID_IN_APP, ANDROID_DOWNLOAD, IOS_IN_APP, IOS_FIRST_OPEN, APP_UNSPECIFIED, ANDROID_FIRST_OPEN, UPLOAD_CALLS, FIREBASE, CLICK_TO_CALL, SALESFORCE, STORE_SALES_CRM, STORE_SALES_PAYMENT_NETWORK, GOOGLE_PLAY, THIRD_PARTY_APP_ANALYTICS, GOOGLE_ATTRIBUTION, STORE_SALES_DIRECT, DOUBLECLICK_SEARCH ]
+        notc: [ AverageCpm, AverageCpv, Clicks, Cost, Ctr, EngagementRate, Engagements, Impressions, VideoQuartile100Rate, VideoQuartile25Rate, VideoQuartile50Rate, VideoQuartile75Rate, VideoViewRate, VideoViews ]
         sgmt: true
         zero: true
       - name: ExternalCustomerId
@@ -9956,9 +9880,6 @@ reports:
         kind: MonthOfYear
         enum: [ JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER ]
         sgmt: true
-        zero: true
-      - name: PrimaryCompanyName
-        kind: String
         zero: true
       - name: Quarter
         kind: String
@@ -10002,6 +9923,7 @@ reports:
         zero: true
       - name: ViewThroughConversions
         kind: Long
+        notc: [ ClickType ]
         zero: true
       - name: Week
         kind: String
